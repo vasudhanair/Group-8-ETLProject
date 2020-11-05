@@ -26,3 +26,16 @@ starbucks_location.postcode,starbucks_location.phone_number
 FROM weather_data
 JOIN starbucks_location
 ON weather_data.city=starbucks_location.city;
+
+SELECT w.city, w.humidity, s.ownership_type, s.store_name
+FROM weather_data AS w LEFT JOIN starbucks_location AS s
+ON w.city=s.city
+WHERE ownership_type ='Licensed'
+ORDER BY w.city
+
+--Count of store_number which have cloudiness with ‘1’
+SELECT w.city,w.cloudiness, s.store_number
+FROM weather_data AS w LEFT JOIN starbucks_location AS s
+ON w.city=s.city
+WHERE w.cloudiness = '1'
+ORDER BY w.city;
